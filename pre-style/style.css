@@ -1,0 +1,253 @@
+@import "tailwindcss";
+@import "./style-form.css";
+@import "./style-head&foot.css";
+@import "./style-index.css";
+@import "./style-team.css";
+@config "./tailwind.config.js";
+/* ===== Tailwind 4 Configuration ===== */
+@theme {
+    --font-family-vazir: 'Vazirmatn', sans-serif;
+
+    --color-primary-50: #f0f9ff;
+    --color-primary-100: #e0f2fe;
+    --color-primary-400: #38bdf8;
+    --color-primary-500: #0ea5e9;
+    --color-primary-600: #0284c7;
+    --color-primary-700: #0369a1;
+
+    --color-dark-900: #080e1a;
+    --color-dark-800: #0c1526;
+    --color-dark-700: #0f172a;
+    --color-dark-600: #1e293b;
+    --color-dark-500: #334155;
+
+    --color-accent: #6C000D;
+
+    --animate-float: float 4s ease-in-out infinite;
+    --animate-pulse-slow: pulse-slow 3s ease-in-out infinite;
+}
+
+/* ===== Keyframes ===== */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse-slow {
+
+    0%,
+    100% {
+        opacity: 0.25;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.04);
+    }
+}
+
+/* ===== Base Styles ===== */
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-family-vazir);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+    }
+
+    .dark ::-webkit-scrollbar-track {
+        background: #0f172a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #94a3b8;
+        border-radius: 3px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+        background: #334155;
+    }
+}
+
+/* ===== Components ===== */
+@layer components {
+
+    /* Navigation Links */
+    .nav-link {
+        @apply relative text-sm font-medium py-1 px-1 transition-colors duration-200;
+        color: #475569;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            border-radius: 2px;
+            background: #0284c7;
+            transition: width 0.28s ease;
+        }
+
+        &:hover {
+            color: #0f172a;
+
+            &::after {
+                width: 100%;
+            }
+        }
+    }
+
+    .dark .nav-link {
+        color: #e4efff;
+
+        &::after {
+            background: #38bdf8;
+        }
+
+
+        &:hover {
+            color: #f1f5f9;
+        }
+    }
+
+    .nav-link-active {
+        @apply relative text-sm font-semibold py-1 px-1 text-sky-600 dark:text-sky-400;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 2px;
+            background: #0284c7;
+        }
+    }
+
+    .dark .nav-link-active::after {
+        background: #38bdf8;
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav-link {
+        @apply block py-2 px-3 rounded-lg text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors;
+    }
+
+    .mobile-nav-link-active {
+        @apply block py-2 px-3 rounded-lg text-sm font-semibold bg-sky-50 dark:bg-gray-800 text-sky-600 dark:text-sky-400;
+    }
+
+
+    /* Glass Effects */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .dark .glass-card {
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(56, 189, 248, 0.1);
+    }
+
+    .glass-footer {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .dark .glass-footer {
+        background: rgba(15, 23, 42, 0.15);
+        border-top: 1px solid rgba(56, 189, 248, 0.05);
+    }
+
+    /* Detail Items */
+    .detail-item {
+        @apply text-xs sm:text-sm lg:text-base mb-2 pr-3 border-r-2 transition-colors duration-200;
+        border-color: #1e40af;
+        color: #334155;
+    }
+
+    .dark .detail-item {
+        border-color: #38bdf8;
+
+        color: #e4efff;
+    }
+
+    .detail-label {
+        @apply font-bold;
+        color: #1e40af;
+    }
+
+    .dark .detail-label {
+        color: #38bdf8;
+    }
+
+    /* Social Buttons */
+    .social-btn {
+        @apply px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 bg-gray-100 text-blue-800 hover:bg-blue-800 hover:text-white hover:translate-y-[-1px];
+    }
+
+    .dark .social-btn {
+        @apply bg-gray-800 text-sky-400 hover:bg-sky-600 hover:text-white;
+    }
+
+    .social-btn-inline {
+        @apply px-2 py-1 rounded-full text-xs font-medium transition-all duration-300 bg-gray-100 text-blue-800 hover:bg-blue-800 hover:text-white inline-block;
+    }
+
+    .dark .social-btn-inline {
+        @apply bg-gray-800 text-sky-400 hover:bg-sky-600 hover:text-white;
+    }
+
+    /* Back to Top Button */
+
+    .back-to-top-btn {
+        @apply fixed bottom-8 left-8 w-12 h-12 rounded-full flex items-center justify-center text-xl transition-all duration-300 z-50;
+        background: rgba(108, 0, 13, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        backdrop-filter: blur(10px);
+
+        &:hover {
+            background: rgba(108, 0, 13, 1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    .dark .back-to-top-btn {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+
+        &:hover {
+            background: rgba(30, 41, 59, 0.95);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+        }
+    }
+}

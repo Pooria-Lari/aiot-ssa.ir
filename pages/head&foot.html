@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>انجمن اینترنت اشیاء و هوش مصنوعی</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- خروجی CSS ساخته‌شده توسط Tailwind 4 -->
+  <link rel="stylesheet" href="../dist.css">
+  <script>
+    (() => {
+      const root = document.documentElement;
+
+      try {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
+      } catch {
+        root.classList.remove("dark");
+      }
+    })();
+  </script>
+
+</head>
+
+<body
+  class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 transition-colors duration-300 antialiased overflow-x-hidden">
+
+  <!-- نوار پیشرفت اسکرول -->
+  <div id="scrollProgress"
+    class="fixed top-0 right-0 h-[2px] bg-gradient-to-r from-sky-400 to-indigo-500 z-[100] w-0 transition-all duration-100 ease-linear"
+    role="presentation"></div>
+
+  <!-- نوار ناوبری -->
+  <nav id="navbar"
+    class="fixed top-0 right-0 left-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-sky-500/10 transition-all duration-300"
+    aria-label="ناوبری اصلی">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+
+      <!-- لوگو -->
+      <a href="index.html" class="flex items-center gap-2.5 shrink-0 group" aria-label="صفحه اصلی انجمن">
+        <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن"
+          class="h-8 w-auto transition-all duration-400 group-hover:-rotate-6 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.75)]" />
+        <span class="hidden sm:block leading-tight">
+          <span class="block text-sm font-bold text-slate-900 dark:text-slate-100">انجمن علمی دانشجویی</span>
+          <span class="block text-[0.68rem] text-sky-500 dark:text-sky-400 font-medium">اینترنت اشیاء و هوش
+            مصنوعی</span>
+        </span>
+      </a>
+
+      <!-- منوی دسکتاپ -->
+      <nav class="hidden lg:flex items-center gap-6" aria-label="منوی اصلی">
+        <a href="index.html"
+          class="nav-link relative text-[0.85rem] font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">خانه</a>
+        <a href="team.html"
+          class="nav-link relative text-[0.85rem] font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">تیم‌های
+          اجرایی</a>
+        <a href="workshops.html"
+          class="nav-link relative text-[0.85rem] font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">کارگاه‌ها</a>
+        <a href="competitions.html"
+          class="nav-link relative text-[0.85rem] font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">مسابقات</a>
+        <a href="board.html"
+          class="nav-link active relative text-[0.85rem] font-medium text-sky-600 dark:text-sky-400 transition-colors"
+          aria-current="page">اعضای هیات مدیره</a>
+        <a href="about.html"
+          class="nav-link relative text-[0.85rem] font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">درباره
+          ما</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <!-- دکمه دارک مود/لایت مود -->
+        <button id="themeToggleBtn"
+          class="p-2 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-sky-400 hover:scale-110 transition-transform focus:outline-none"
+          aria-label="تغییر تم">
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+            </path>
+          </svg>
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <!-- دکمه عضویت -->
+        <a href="#subscribe" id="desktopCta"
+          class="hidden lg:inline-flex items-center gap-1.5 text-[0.82rem] font-semibold text-white px-5 py-2 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-[0_2px_14px_rgba(14,165,233,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_22px_rgba(14,165,233,0.5)] transition-all whitespace-nowrap">
+          عضویت
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+
+        <!-- دکمه همبرگری موبایل -->
+        <button
+          class="ham-btn lg:hidden flex flex-col gap-1.5 p-2 bg-transparent border-none cursor-pointer focus:outline-none"
+          id="hamBtn" aria-label="باز و بستن منو" aria-expanded="false" aria-controls="mobileMenu">
+          <span
+            class="block w-[22px] h-[2px] bg-slate-700 dark:bg-slate-300 rounded-full transition-all duration-300"></span>
+          <span
+            class="block w-[22px] h-[2px] bg-slate-700 dark:bg-slate-300 rounded-full transition-all duration-300"></span>
+          <span
+            class="block w-[22px] h-[2px] bg-slate-700 dark:bg-slate-300 rounded-full transition-all duration-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- منوی کشویی موبایل -->
+    <div id="mobileMenu" class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out lg:hidden"
+      role="navigation" aria-label="منوی موبایل">
+      <div
+        class="px-4 py-4 border-t border-slate-200 dark:border-white/10 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md flex flex-col gap-1">
+        <a href="index.html"
+          class="block text-[0.85rem] text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">خانه</a>
+        <a href="team.html"
+          class="block text-[0.85rem] text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">تیم‌های
+          اجرایی</a>
+        <a href="workshops.html"
+          class="block text-[0.85rem] text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">کارگاه‌ها</a>
+        <a href="competitions.html"
+          class="block text-[0.85rem] text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">مسابقات</a>
+        <a href="board.html"
+          class="block text-[0.85rem] text-sky-600 dark:text-sky-400 font-medium bg-sky-50 dark:bg-sky-500/10 px-4 py-2.5 rounded-lg"
+          aria-current="page">اعضای هیات مدیره</a>
+        <a href="about.html"
+          class="block text-[0.85rem] text-slate-700 dark:text-slate-300 px-4 py-2.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors">درباره
+          ما</a>
+        <div class="pt-3 pb-1">
+          <a href="#subscribe"
+            class="flex items-center justify-center w-full text-[0.82rem] font-semibold text-white px-5 py-2.5 rounded-full bg-gradient-to-br from-sky-500 to-blue-600 shadow-md">
+            عضویت در انجمن
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- محتوای اصلی تستی -->
+  <main class="min-h-[60vh] flex flex-col items-center justify-center pt-32 pb-20 px-6 text-center">
+    <div
+      class="max-w-2xl bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700">
+      <h1
+        class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent mb-4">
+        به انجمن هوش مصنوعی و اینترنت اشیا خوش آمدید</h1>
+      <p class="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+        جایی که خلاقیت، فناوری و نوآوری به هم می‌رسند. در انجمن علمی اینترنت اشیا و هوش مصنوعی
+        با جدیدترین دستاوردهای AI و IoT آشنا شوید، در پروژه‌های واقعی مشارکت کنید و مهارت‌های
+        مورد نیاز آینده را در کنار متخصصان و دانشجویان علاقه‌مند توسعه دهید.
+      </p>
+    </div>
+  </main>
+
+  <!-- فوتر -->
+  <footer
+        class="relative overflow-hidden bg-slate-100 dark:bg-[#080e1a] border-t border-slate-200 dark:border-sky-500/10 transition-colors duration-300"
+        aria-label="فوتر سایت">
+        <div class="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_50%,rgba(56,189,248,0.05)_0%,transparent_50%),radial-gradient(circle_at_80%_20%,rgba(37,99,235,0.06)_0%,transparent_40%)] dark:block hidden"
+            aria-hidden="true"></div>
+        <div class="absolute inset-0 pointer-events-none opacity-30 dark:opacity-35"
+            style="background-image: radial-gradient(circle, rgba(56, 189, 248, 0.2) 1px, transparent 1px); background-size: 24px 24px;"
+            aria-hidden="true"></div>
+
+        <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+                <div class="footer-fade opacity-0 translate-y-5 transition-all duration-700 ease-out lg:col-span-1 justify-center
+
+">
+
+                    <a href="index.html"
+                        class="flex items-center gap-3 mb-5 hover:drop-shadow-[0_0_8px_rgba(56,189,248,0.6)] transition-all group"
+                        aria-label="صفحه اصلی">
+                        <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن"
+                            class="h-9 w-auto group-hover:scale-105 transition-transform"
+                            onerror="this.src='https://placehold.co/100x32/0082c6/ffffff?text=AIoT'" />
+                        <span class="leading-tight">
+                            <span class="block text-[0.82rem] font-bold text-slate-800 dark:text-slate-100">انجمن علمی
+                                دانشجویی</span>
+                            <span class="block text-[0.72rem] text-sky-600 dark:text-sky-400">اینترنت اشیاء و هوش
+                                مصنوعی</span>
+                        </span>
+                    </a>
+                    <p
+                        class="text-[0.8rem] text-slate-600 dark:text-slate-300 leading-[1.9] mb-3 max-w-md text-justify">
+                        انجمن علمی دانشجویی اینترنت اشیاء و علوم داده با هدف توسعه دانش فناوری و
+                        تقویت مهارت‌های کاربردی دانشجویان
+                        فعالیت می‌کند.
+                    </p>
+                    <p
+                        class="text-[0.76rem] text-slate-600 dark:text-slate-300 leading-[1.9] mb-3 max-w-md text-justify">
+                        از طریق برگزاری کارگاه‌های آموزشی، وبینارها و مسابقات تخصصی، بستر یادگیری عملی را برای اعضا
+                        فراهم می‌سازیم.
+                    </p>
+                    <!-- <p class="text-[0.76rem] text-slate-600 dark:text-slate-300 leading-[1.9] max-w-md">
+            زیر چتر باشگاه پژوهشگران جوان و نخبگان شهرری، در مسیر ساختن آینده‌ای هوشمند قدم برمی‌داریم.
+          </p> -->
+                </div>
+
+                <div class="footer-fade opacity-0 translate-y-5 transition-all duration-700 ease-out delay-100 mr-px">
+                    <h2
+                        class="flex items-center gap-2.5 text-[0.85rem] font-semibold text-slate-800 dark:text-slate-100 mb-5">
+                        <span class="w-5 h-[2px] bg-sky-500 rounded-full" aria-hidden="true"></span>
+                        شبکه‌های اجتماعی
+                    </h2>
+                    <ul class="flex flex-col gap-3 mt-6" role="list">
+                        <li><a href="https://www.linkedin.com/company/yadegar-aiot/"
+                                class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 group"
+                                target="_blank" rel="noopener"><span
+                                    class="w-9 h-9 border border-slate-300 dark:border-sky-500/20 rounded-lg flex items-center justify-center group-hover:border-sky-500 group-hover:bg-sky-50 dark:group-hover:bg-sky-500/10 group-hover:-translate-y-0.5 transition-all"><svg
+                                        class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg></span><span
+                                    class="text-[0.78rem] font-medium transition-colors">LinkedIn</span></a></li>
+                        <li><a href="https://t.me/yadegar_aiot"
+                                class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 group"
+                                target="_blank" rel="noopener"><span
+                                    class="w-9 h-9 border border-slate-300 dark:border-sky-500/20 rounded-lg flex items-center justify-center group-hover:border-sky-500 group-hover:bg-sky-50 dark:group-hover:bg-sky-500/10 group-hover:-translate-y-0.5 transition-all"><svg
+                                        class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 5L2 12.5l7 1M21 5l-4.5 15L9 13.5M21 5L9 13.5m0 0V19l3.25-3" />
+                                    </svg></span><span
+                                    class="text-[0.78rem] font-medium transition-colors">Telegram</span></a></li>
+                        <li><a href="https://ble.ir/yadegar_aiot"
+                                class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 group"
+                                target="_blank" rel="noopener"><span
+                                    class="w-9 h-9 border border-slate-300 dark:border-sky-500/20 rounded-lg flex items-center justify-center group-hover:border-sky-500 group-hover:bg-sky-50 dark:group-hover:bg-sky-500/10 group-hover:-translate-y-0.5 transition-all"><svg
+                                        class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                        <polyline points="9 12 11 14 15 10" />
+                                    </svg></span><span
+                                    class="text-[0.78rem] font-medium transition-colors">Bale</span></a></li>
+                        <li><a href="https://github.com/yadegar-aiot/"
+                                class="flex items-center gap-3 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 group"
+                                target="_blank" rel="noopener"><span
+                                    class="w-9 h-9 border border-slate-300 dark:border-sky-500/20 rounded-lg flex items-center justify-center group-hover:border-sky-500 group-hover:bg-sky-50 dark:group-hover:bg-sky-500/10 group-hover:-translate-y-0.5 transition-all"><svg
+                                        class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg></span><span
+                                    class="text-[0.78rem] font-medium transition-colors">GitHub</span></a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-fade opacity-0 translate-y-5 transition-all duration-700 ease-out delay-200">
+                    <h2
+                        class="flex items-center gap-2.5 text-[0.85rem] font-semibold text-slate-800 dark:text-slate-100 mb-5">
+                        <span class="w-5 h-[2px] bg-sky-500 rounded-full" aria-hidden="true"></span>
+                        ارتباط با ما
+                    </h2>
+                    <ul class="flex flex-col gap-4" role="list">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="w-9 h-9 border border-slate-300 dark:border-sky-500/20 rounded-lg flex items-center justify-center text-sky-500 shrink-0">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                    <polyline points="22,6 12,13 2,6" />
+                                </svg>
+                            </span>
+                            <div class="flex flex-col gap-0.5 pt-1">
+                                <span class="text-[0.7rem] text-slate-500 dark:text-slate-400 font-medium">ایمیل</span>
+                                <a href="mailto:yadegar.ai.ssa@gmail.com"
+                                    class="text-[0.76rem] text-slate-700 dark:text-slate-200 hover:text-sky-500 transition-colors block"
+                                    dir="ltr">info@aiot.ir</a>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="w-9 h-9 border border-slate-300 dark:border-sky-500/20 rounded-lg flex items-center justify-center text-sky-500 shrink-0">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                            </span>
+                            <div class="flex flex-col gap-0.5 pt-1">
+                                <span class="text-[0.7rem] text-slate-500 dark:text-slate-400 font-medium">آدرس</span>
+                                <span class="text-[0.76rem] text-slate-700 dark:text-slate-200 leading-[1.6]">تهران،
+                                    شهرری، باشگاه
+                                    پژوهشگران جوان</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-fade opacity-0 translate-y-5 transition-all duration-700 ease-out delay-300">
+                    <h2
+                        class="flex items-center gap-2.5 text-[0.85rem] font-semibold text-slate-800 dark:text-slate-100 mb-5">
+                        <span class="w-5 h-[2px] bg-sky-500 rounded-full" aria-hidden="true"></span>
+                        حامیان
+                    </h2>
+                    <div class="grid grid-cols-2 lg:grid-cols-2 gap-3">
+                        <a href="https://bpj.iau.ir/"
+                            class="flex flex-col items-center justify-center gap-2 p-3 min-h-[80px] border border-slate-200 dark:border-sky-500/10 rounded-xl bg-white dark:bg-white/5 hover:border-sky-400 dark:hover:border-sky-500/30 hover:bg-sky-50 dark:hover:bg-sky-500/10 hover:-translate-y-0.5 transition-all group"
+                            aria-label="باشگاه پژوهشگران جوان و نخبگان">
+                            <div class="flex items-center justify-center h-10 w-full">
+                                <img src="assets/svgs/bpj-logo.svg" alt="لوگوی باشگاه"
+                                    class="max-h-[38px] w-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+                                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-10 h-10 rounded-lg bg-sky-500/10 border border-dashed border-sky-500/30 flex items-center justify-center text-sky-500 text-xl\' aria-hidden=\'true\'>🏛️</div>'" />
+                            </div>
+                            <span
+                                class="text-[0.6rem] text-slate-600 dark:text-slate-300 text-center font-medium leading-snug">باشگاه
+                                پژوهشگران<br />جوان و نخبگان</span>
+                        </a>
+
+                        <a href="https://yi.iau.ir"
+                            class="flex flex-col items-center justify-center gap-2 p-3 min-h-[80px] border border-slate-200 dark:border-sky-500/10 rounded-xl bg-white dark:bg-white/5 hover:border-sky-400 dark:hover:border-sky-500/30 hover:bg-sky-50 dark:hover:bg-sky-500/10 hover:-translate-y-0.5 transition-all group"
+                            aria-label="حامی دوم">
+                            <div class="flex items-center justify-center h-10 w-full">
+                                <img src="assets/svgs/university-logo.svg" alt="لوگوی حامی"
+                                    class="max-h-[38px] w-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all"
+                                    onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-10 h-10 rounded-lg bg-sky-500/10 border border-dashed border-sky-500/30 flex items-center justify-center text-sky-500 text-xl\' aria-hidden=\'true\'>🎓</div>'" />
+                            </div>
+                            <span
+                                class="text-[0.6rem] text-slate-600 dark:text-slate-300 text-center font-medium leading-snug">دانشگاه
+                                آزاد اسلامی
+                                <br />واحد یادگار امام خمینی</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative border-t border-slate-200 dark:border-white/5 bg-slate-50 dark:bg-sky-500/5">
+            <div
+                class="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8 text-center md:text-right">
+                <div class="relative w-[72px] h-[72px] shrink-0">
+                    <span class="absolute inset-[-8px] rounded-full border border-sky-500/20 animate-pulse-ring"></span>
+                    <span class="absolute inset-[-18px] rounded-full border border-sky-500/20 animate-pulse-ring"
+                        style="animation-delay: 0.5s"></span>
+                    <img src="assets/svgs/aiot-logo-blue.svg" alt=""
+                        class="w-full h-full object-contain animate-float drop-shadow-[0_0_12px_rgba(56,189,248,0.3)]" />
+                </div>
+                <div>
+                    <p class="text-base font-bold text-slate-800 dark:text-slate-100 mb-1">انجمن علمی دانشجویی اینترنت
+                        اشیاء و هوش
+                        مصنوعی</p>
+                    <p
+                        class="text-[0.8rem] font-bold bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent mb-1.5">
+                        دانش فردا را امروز می‌سازیم</p>
+                    <p class="text-[0.7rem] text-slate-500 dark:text-slate-400">باشگاه پژوهشگران جوان و نخبگان شهرری</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-slate-200 dark:border-white/5 bg-slate-100 dark:bg-[#080e1a]">
+            <div
+                class="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+                <p class="text-[0.7rem] text-slate-500 dark:text-slate-400">
+                    © <span id="footerYear">۱۴۰۵</span> – انجمن علمی اینترنت اشیاء و هوش مصنوعی. تمامی حقوق محفوظ است.
+                </p>
+                <ul class="flex items-center gap-4" role="list">
+                    <li><a href="#"
+                            class="text-[0.7rem] text-slate-500 dark:text-slate-500 hover:text-sky-500 transition-colors">حریم
+                            خصوصی</a></li>
+                    <li class="w-px h-3 bg-slate-300 dark:bg-slate-700"></li>
+                    <li><a href="#"
+                            class="text-[0.7rem] text-slate-500 dark:text-slate-500 hover:text-sky-500 transition-colors">شرایط
+                            استفاده</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+  <script>
+
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+
+    themeToggleBtn?.addEventListener("click", () => {
+      const root = document.documentElement;
+      const isDark = root.classList.toggle("dark");
+
+      try {
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      } catch { }
+    });
+
+
+
+    const progressBar = document.getElementById("scrollProgress");
+    window.addEventListener(
+      "scroll",
+      () => {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (scrolled / total) * 100 + "%";
+      },
+      { passive: true }
+    );
+
+    const navbar = document.getElementById("navbar");
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.scrollY > 48) {
+          navbar.classList.add("shadow-md");
+          navbar.classList.replace("bg-white/80", "bg-white/95");
+          navbar.classList.replace("dark:bg-slate-900/80", "dark:bg-slate-950/95");
+        } else {
+          navbar.classList.remove("shadow-md");
+          navbar.classList.replace("bg-white/95", "bg-white/80");
+          navbar.classList.replace("dark:bg-slate-950/95", "dark:bg-slate-900/80");
+        }
+      },
+      { passive: true }
+    );
+
+    const hamBtn = document.getElementById("hamBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamBtn.addEventListener("click", () => {
+      hamBtn.classList.toggle("open");
+      const isOpen = hamBtn.classList.contains("open");
+      hamBtn.setAttribute("aria-expanded", isOpen);
+
+      if (isOpen) {
+        mobileMenu.classList.remove("max-h-0", "opacity-0");
+        mobileMenu.classList.add("max-h-[500px]", "opacity-100");
+      } else {
+        mobileMenu.classList.remove("max-h-[500px]", "opacity-100");
+        mobileMenu.classList.add("max-h-0", "opacity-0");
+      }
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        hamBtn.classList.remove("open");
+        hamBtn.setAttribute("aria-expanded", "false");
+        mobileMenu.classList.remove("max-h-[500px]", "opacity-100");
+        mobileMenu.classList.add("max-h-0", "opacity-0");
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && hamBtn.classList.contains("open")) {
+        hamBtn.click();
+        hamBtn.focus();
+      }
+    });
+
+    const fadeEls = document.querySelectorAll(".footer-fade");
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.replace("opacity-0", "opacity-100");
+            e.target.classList.replace("translate-y-5", "translate-y-0");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    fadeEls.forEach((el) => io.observe(el));
+
+    (function () {
+      const year = new Date().toLocaleDateString("fa-IR", { year: "numeric" });
+      const el = document.getElementById("footerYear");
+      if (el) el.textContent = year;
+    })();
+  </script>
+</body>
+
+</html>

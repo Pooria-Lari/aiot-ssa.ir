@@ -1,0 +1,184 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* تنظیم فاصله بادی برای هدر فیکس */
+body {
+    padding-top: 70px;
+}
+
+/* فقط مربوط به صفحه فرم‌ها / فایل‌ها */
+
+/* کلاس روی body */
+.page-form {
+    padding: 40px 42px;
+    min-height: 100vh;
+    background-color: #ffffff;
+    position: relative;
+}
+
+/* اگر هدر فیکس داری، این کمک می‌کنه محتوا زیر هدر نره */
+.page-form header {
+    right: 0;
+    left: 0;
+}
+
+
+
+/* بک‌گراند ثابت */
+.fixed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.fixed-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+/* فیلتر و سرچ */
+.search-filter {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.search-filter input,
+.search-filter select {
+    padding: 12px 20px;
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-filter input:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* کارت‌ها */
+.file-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03), 0 2px 5px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    backdrop-filter: blur(10px);
+    opacity: .9;
+}
+
+.file-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 40px rgba(59, 130, 246, 0.15);
+    border-color: #3b82f6;
+}
+
+.file-card h3 {
+    margin: 0 0 20px 0;
+    color: #0f172a;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 15px;
+}
+
+/* لیست اطلاعات */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.info-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.info-list li span:first-child {
+    color: #94a3b8;
+}
+
+.info-list li span:last-child {
+    font-weight: 600;
+    color: #334155;
+    background: #f1f5f9;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* دکمه دانلود */
+.download-btn {
+    display: block;
+    text-align: center;
+    padding: 15px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 16px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.file-card:hover .download-btn {
+    background: #2563eb;
+    transform: scale(1.02);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

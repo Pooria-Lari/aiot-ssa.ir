@@ -1,0 +1,55 @@
+[18-Jun-2026 12:43:23 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/aiotssai/public_html/subscribe/config.php:22
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/submit.php(2): require()
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/config.php on line 22
+[18-Jun-2026 12:45:03 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/aiotssai/public_html/subscribe/config.php:22
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/submit.php(2): require()
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/config.php on line 22
+[18-Jun-2026 13:40:11 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aiotssai_subscribe.admins' doesn't exist in /home/aiotssai/public_html/subscribe/index.php:13
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/index.php(13): PDO->prepare('SELECT * FROM a...')
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/index.php on line 13
+[18-Jun-2026 13:40:22 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aiotssai_subscribe.admins' doesn't exist in /home/aiotssai/public_html/subscribe/index.php:13
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/index.php(13): PDO->prepare('SELECT * FROM a...')
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/index.php on line 13
+[18-Jun-2026 13:42:33 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aiotssai_subscribe.admins' doesn't exist in /home/aiotssai/public_html/subscribe/index.php:13
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/index.php(13): PDO->prepare('SELECT * FROM a...')
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/index.php on line 13
+[18-Jun-2026 13:43:47 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aiotssai_subscribe.admins' doesn't exist in /home/aiotssai/public_html/subscribe/index.php:13
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/index.php(13): PDO->prepare('SELECT * FROM a...')
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/index.php on line 13
+[18-Jun-2026 13:43:52 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aiotssai_subscribe.admins' doesn't exist in /home/aiotssai/public_html/subscribe/index.php:13
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/index.php(13): PDO->prepare('SELECT * FROM a...')
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/index.php on line 13
+[18-Jun-2026 13:43:56 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aiotssai_subscribe.admins' doesn't exist in /home/aiotssai/public_html/subscribe/index.php:13
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/index.php(13): PDO->prepare('SELECT * FROM a...')
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/index.php on line 13
+[18-Jun-2026 13:45:46 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'aiotssai_subscribe.admins' doesn't exist in /home/aiotssai/public_html/subscribe/index.php:13
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/index.php(13): PDO->prepare('SELECT * FROM a...')
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/index.php on line 13
+[18-Jun-2026 13:57:43 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number in /home/aiotssai/public_html/subscribe/create_admin.php:20
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/create_admin.php(20): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/create_admin.php on line 20
+[18-Jun-2026 16:49:22 Asia/Tehran] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY093]: Invalid parameter number in /home/aiotssai/public_html/subscribe/new_admin.php:20
+Stack trace:
+#0 /home/aiotssai/public_html/subscribe/new_admin.php(20): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/aiotssai/public_html/subscribe/new_admin.php on line 20

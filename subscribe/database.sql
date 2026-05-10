@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS myproject CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE myproject;
+
+CREATE TABLE IF NOT EXISTS users 
+(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    student_number VARCHAR(20) NOT NULL UNIQUE,
+    skills TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) 
+ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS admins 
+(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+
+INSERT INTO admins (username, password) 
+VALUES ('admin', '$2y$10$7rKGeW8I6XY/R2U6pXvS..mB4bE7Pq5I.K7S2nJzE7vUXWdfmCOvG')
+ON DUPLICATE KEY UPDATE id=id;
