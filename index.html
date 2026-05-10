@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>خانه | انجمن علمی اینترنت اشیاء و هوش مصنوعی</title>
+    <meta name="description" content="انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان شهرری">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== تنظیمات اختصاصی صفحه اصلی ===== */
+        
+        /* تنظیم پس‌زمینه ثابت برای دسکتاپ */
+        body {
+            background-image: url('assets/images/bg-home.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: #0F2B3D;
+        }
+
+        /* بخش Hero با شفافیت برای دیده شدن پس‌زمینه */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            background: rgba(15, 43, 61, 0.7);
+            backdrop-filter: blur(0.4px);
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-logo {
+            max-width: 280px;
+            width: 80%;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.3));
+        }
+
+        .hero-title .line1 {
+            display: block;
+            font-size: 2rem;
+            color: #FBBF24;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.7);
+            font-weight: 900;
+        }
+
+        .hero-title .line2 {
+            display: block;
+            font-size: 2rem;
+            color: #FFFFFF;
+            text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+            font-weight: 900;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #E2E8F0;
+            max-width: 800px;
+            margin: 1.5rem auto 0;
+            line-height: 1.7;
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        .hero-cta {
+            margin-top: 2rem;
+        }
+
+        .btn-hero {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            border: none;
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 40px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            background: #1e3a8a;
+        }
+
+        /* سایر بخش‌ها با پس‌زمینه سفید/روشن برای خوانایی */
+        .section {
+            padding: 80px 0;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: #1e40af;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to left, #1e40af, #3b82f6);
+            margin: 15px auto 0;
+            border-radius: 3px;
+        }
+
+        .section-bg-light {
+            background: rgba(248, 250, 252, 0.95);
+        }
+
+        /* کارت اهداف */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .goal-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .goal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: #3b82f6;
+        }
+
+        .goal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .goal-card h3 {
+            font-size: 1.2rem;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        /* پیش‌نمایش تیم‌ها */
+        .teams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card-home {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .team-card-home:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .team-logo-home {
+            max-width: 160px;
+            max-height: 120px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .team-card-home h3 {
+            font-size: 1.3rem;
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .team-card-home p {
+            color: #475569;
+            margin-bottom: 20px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #1e40af;
+            padding: 8px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        /* لیست کارگاه‌ها */
+        .workshops-bg {
+            background: rgba(248, 250, 252, 0.95);
+        }
+
+        .workshop-list-simple {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .workshop-item {
+            background: white;
+            border-radius: 60px;
+            padding: 12px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .workshop-item:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: #3b82f6;
+        }
+
+        .workshop-name {
+            font-weight: bold;
+            color: #0f172a;
+            font-size: 0.95rem;
+        }
+
+        .workshop-date {
+            font-size: 0.8rem;
+            color: #475569;
+        }
+
+        .workshop-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* بخش تماس */
+        .contact-box {
+            background: rgba(248, 250, 252, 0.95);
+            border-radius: 32px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-box a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        /* حامیان */
+        .partners-flex {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            max-height: 120px;
+            max-width: 280px;
+            object-fit: contain;
+            filter: grayscale(0.2);
+            transition: 0.3s;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+
+        /* نقل قول پایانی */
+        .quote-footer {
+            text-align: center;
+            padding: 20px 0 40px;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #FBBF24;
+            margin: 20px 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .quote-footer p:last-child {
+            color: #E2E8F0;
+        }
+
+        /* انیمیشن اسکرول */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== تنظیمات مخصوص موبایل ===== */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                background-position: top center;
+            }
+            .section { padding: 50px 0; }
+            .section-title { font-size: 1.6rem; }
+            .hero-title .line1, .hero-title .line2 { font-size: 1.3rem; }
+            .hero-logo { max-width: 200px; }
+            .hero-subtitle { font-size: 0.9rem; }
+            .workshop-item { flex-direction: column; text-align: center; border-radius: 20px; }
+            .contact-box { padding: 25px; }
+            .partner-logo { max-height: 70px; max-width: 180px; }
+            .quote-text { font-size: 1rem; }
+            
+            /* منوی موبایل */
+            .mobile-menu-btn {
+                display: block !important;
+            }
+            nav {
+                display: none !important;
+                width: 100% !important;
+                flex-direction: column !important;
+                background: white !important;
+                margin-top: 15px !important;
+                border-radius: 16px !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+            }
+            nav.show {
+                display: flex !important;
+            }
+            nav a {
+                padding: 12px !important;
+                text-align: center !important;
+                border-bottom: 1px solid #e2e8f0 !important;
+            }
+            .header-container {
+                flex-wrap: wrap !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن" class="logo-img">
+            <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" style="display: none;">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">خانه</a>
+            <a href="team.html">تیم‌های اجرایی</a>
+            <a href="workshops.html">کارگاه‌ها</a>
+            <a href="competitions.html">مسابقات</a>
+            <a href="board.html">اعضای هیات مدیره</a>
+            <a href="about.html">درباره ما</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container hero-content">
+            <img class="hero-logo" src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی اصلی انجمن">
+            <h1 class="hero-title">
+                <span class="line1">انجمن علمی دانشجویی</span>
+                <span class="line2">اینترنت اشیاء و هوش مصنوعی</span>
+            </h1>
+            <p class="hero-subtitle">باشگاه پژوهشگران جوان و نخبگان - شهرری</p>
+            <div class="hero-cta">
+                <a href="#about" class="btn-hero">درباره انجمن بیشتر بدانید</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section reveal">
+        <div class="container">
+            <h2 class="section-title">🎓 درباره انجمن</h2>
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.7; color: #0f172a;">
+                    انجمن علمی هوش مصنوعی و اینترنت اشیا زیر نظر دانشکده مهندسی کامپیوتر دانشگاه یادگار امام فعالیت می‌کند.
+                    مأموریت ما پر کردن شکاف بین دانش تئوری و کاربرد عملی در دنیای واقعی است.
+                </p>
+                <div class="goals-grid">
+                    <div class="goal-card"><div class="goal-icon">🔬</div><h3>تحقیق و نوآوری</h3></div>
+                    <div class="goal-card"><div class="goal-icon">🛠️</div><h3>توسعه سیستم‌های هوشمند</h3></div>
+                    <div class="goal-card"><div class="goal-icon">🤝</div><h3>همکاری و اشتراک دانش</h3></div>
+                    <div class="goal-card"><div class="goal-icon">🌐</div><h3>کاربرد فناوری‌های متصل</h3></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-bg-light reveal">
+        <div class="container">
+            <h2 class="section-title">🏢 تیم‌های تخصصی ما</h2>
+            <div class="teams-grid">
+                <div class="team-card-home">
+                    <img class="team-logo-home" src="assets/svgs/team-research.svg" alt="تیم پژوهش">
+                    <h3>تیم علمی پژوهشی</h3>
+                    <p>پژوهش‌های پیشرفته در حوزه هوش مصنوعی، اینترنت اشیا و علوم داده</p>
+                    <a href="team.html" class="btn-outline">مشاهده تیم →</a>
+                </div>
+                <div class="team-card-home">
+                    <img class="team-logo-home" src="assets/svgs/team-design.svg" alt="تیم طراحی">
+                    <h3>تیم طراحی و ایده‌پردازی</h3>
+                    <p>طراحی تجربه کاربری، برندسازی، محتوای بصری و ایده‌پردازی خلاقانه</p>
+                    <a href="team.html" class="btn-outline">مشاهده تیم →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal workshops-bg">
+        <div class="container">
+            <h2 class="section-title">📅 کارگاه‌های پیش رو</h2>
+            <div class="workshop-list-simple">
+                <div class="workshop-item">
+                    <span class="workshop-name">🤖 آشنایی با هوش مصنوعی‌های ایرانی و پرامپت‌نویسی</span>
+                    <span class="workshop-date">بهار ۱۴۰۴</span>
+                    <a href="workshops.html" class="workshop-link">جزئیات →</a>
+                </div>
+                <div class="workshop-item">
+                    <span class="workshop-name">🌐 اصول اینترنت اشیا و کاربردهای صنعتی</span>
+                    <span class="workshop-date">بهار ۱۴۰۴</span>
+                    <a href="workshops.html" class="workshop-link">جزئیات →</a>
+                </div>
+                <div class="workshop-item">
+                    <span class="workshop-name">🐍 پایتون مقدماتی (آرشیو)</span>
+                    <span class="workshop-date">زمستان ۱۴۰۳</span>
+                    <a href="workshops.html" class="workshop-link">مشاهده →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal">
+        <div class="container">
+            <h2 class="section-title">📫 ارتباط با ما</h2>
+            <div class="contact-box">
+                <p>📧 <b>ایمیل:</b> <a href="mailto:yadegar.ai.ssa@gmail.com">yadegar.ai.ssa@gmail.com</a></p>
+                <p>📢 <b>تلگرام:</b> <a href="https://t.me/yadegar_aiot" target="_blank" rel="noopener">@yadegar_aiot</a></p>
+                <p>🏢 <b>لینکدین:</b> <a href="https://www.linkedin.com/company/yadegar-aiot/" target="_blank" rel="noopener">yadegar-aiot</a></p>
+                <p>🧩 <b>دبیر انجمن:</b> پوریا لاری</p>
+                <p>👤 <b>روابط عمومی:</b> محمدرضا احمدی — <a href="https://t.me/AIot_ssa_yi_iau" target="_blank" rel="noopener">@AIot_ssa_yi_iau</a></p>
+                <p>🌐 <b>سایت دانشگاه:</b> <a href="https://yi.iau.ir/en" target="_blank" rel="noopener">Yadegar-e-Imam University</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-bg-light reveal">
+        <div class="container">
+            <h2 class="section-title">🤝 حامیان ما</h2>
+            <div class="partners-flex">
+                <img src="assets/svgs/university-logo.svg" alt="دانشگاه یادگار امام" class="partner-logo" onerror="this.style.display='none'">
+                <img src="assets/svgs/bpj-logo.svg" alt="باشگاه پژوهشگران جوان" class="partner-logo" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <div class="container quote-footer">
+            <p class="quote-text">"آینده برای کسانیست که دست از یادگیری بر نمیدارند."</p>
+            <p>انجمن علمی دانشجویی هوش مصنوعی و اینترنت اشیا — دانشگاه یادگار امام (ره)، تهران</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-container">
+        <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="footer-logo">
+        <p>© ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان شهرری</p>
+    </div>
+</footer>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<script src="script.js"></script>
+<script>
+    // منوی موبایل
+    var menuBtn = document.getElementById('mobileMenuBtn');
+    var mainNav = document.getElementById('mainNav');
+    
+    if (menuBtn && mainNav) {
+        menuBtn.onclick = function(e) {
+            e.preventDefault();
+            if (mainNav.classList.contains('show')) {
+                mainNav.classList.remove('show');
+            } else {
+                mainNav.classList.add('show');
+            }
+        };
+    }
+    
+    // انیمیشن اسکرول
+    (function() {
+        const revealElements = document.querySelectorAll('.reveal');
+        if (revealElements.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+            revealElements.forEach(el => observer.observe(el));
+        }
+    })();
+
+    const ctaBtn = document.querySelector('.hero-cta .btn-hero');
+    if (ctaBtn) {
+        ctaBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+</script>
+</body>
+</html>
